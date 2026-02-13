@@ -1,0 +1,76 @@
+@page "{id:int}"
+@model MukeshPortfolio.Pages.ProjectDetailsModel
+@{
+    ViewData["Title"] = Model.Project.Title;
+}
+
+<div class="container py-5">
+    <article class="project-details">
+        
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-page="/Portfolio">Portfolio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.Project.Title</li>
+            </ol>
+        </nav>
+
+        <h1 class="display-5 fw-bold mb-3">@Model.Project.Title</h1>
+
+        <p class="text-muted mb-4">
+            <i class="bi bi-calendar3"></i> @Model.Project.CreatedAt.ToString("MMMM dd, yyyy")
+        </p>
+
+        @if (!string.IsNullOrWhiteSpace(Model.Project.ImageUrl))
+        {
+            <div class="mb-4">
+                <img src="@Model.Project.ImageUrl" 
+                     alt="@Model.Project.Title" 
+                     class="img-fluid rounded shadow" 
+                     style="max-height: 400px; width: 100%; object-fit: cover;" />
+            </div>
+        }
+
+        <div class="mb-4">
+            <h3 class="h5 mb-3">Description</h3>
+            <p class="lead">@Model.Project.Description</p>
+        </div>
+
+        @if (Model.Project.Tags?.Any() == true)
+        {
+            <div class="mb-4">
+                <h3 class="h5 mb-3">Technologies</h3>
+                <div>
+                    @foreach (var tag in Model.Project.Tags)
+                    {
+                        <span class="badge bg-primary me-2 mb-2 px-3 py-2">
+                            @tag
+                        </span>
+                    }
+                </div>
+            </div>
+        }
+
+        <div class="d-flex gap-2 flex-wrap mt-4">
+            @if (!string.IsNullOrWhiteSpace(Model.Project.RepoUrl))
+            {
+                <a href="@Model.Project.RepoUrl" 
+                   class="btn btn-dark" 
+                   target="_blank">
+                    <i class="bi bi-github"></i> View Source Code
+                </a>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.Project.LiveUrl))
+            {
+                <a href="@Model.Project.LiveUrl" 
+                   class="btn btn-primary" 
+                   target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i> Live Demo
+                </a>
+            }
+            <a asp-page="/Portfolio" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Back to Projects
+            </a>
+        </div>
+
+    </article>
+</div>

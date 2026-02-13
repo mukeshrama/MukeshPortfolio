@@ -1,0 +1,189 @@
+@model MukeshPortfolio.Models.EducationViewModel
+@{
+    ViewData["Title"] = "Education - Mukesh Thakur";
+}
+
+<!-- Hero Section -->
+<section class="hero" style="min-height: 50vh;">
+    <div class="hero-content">
+        
+        <div class="code-comment mb-4">
+            // Academic Journey
+        </div>
+
+        <h1>
+            <span class="gradient-text">Education</span>
+        </h1>
+
+        <p class="tagline" style="max-width: 800px; margin: 0 auto;">
+            My academic qualifications and educational background<br/>
+            that shaped my journey as a Full Stack Developer.
+        </p>
+
+    </div>
+</section>
+
+<!-- Education Timeline Section -->
+<section class="container py-5 mb-5">
+    
+    <!-- Stats Overview -->
+    <div class="row mb-5 justify-content-center">
+        <div class="col-md-4 mb-4">
+            <div class="stat-card" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; text-align: center; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent-gradient);"></div>
+                <div style="font-size: 3rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    @Model.Education.Count()
+                </div>
+                <div style="color: var(--text-secondary); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace;">
+                    Qualifications
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="stat-card" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; text-align: center; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--primary-gradient);"></div>
+                <div style="font-size: 3rem; font-weight: 800; color: var(--cyan);">
+                    B.S.C (CS)
+                </div>
+                <div style="color: var(--text-secondary); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace;">
+                    Highest Degree
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education Timeline -->
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            
+            <div class="mb-4 text-center">
+                <div class="code-comment mb-3">
+                    // Academic Timeline
+                </div>
+                <h2 class="h3 fw-bold">
+                    <span class="gradient-text">My Degrees & Certifications</span>
+                </h2>
+            </div>
+
+            <div class="position-relative" style="padding-left: 2rem;">
+                
+                <!-- Vertical Timeline Line -->
+                <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--border-color);"></div>
+
+                @foreach (var edu in Model.Education)
+                {
+                    <div class="education-timeline-item mb-4" style="position: relative;">
+                        
+                        <!-- Timeline Dot -->
+                        <div style="position: absolute; left: -2rem; top: 1.5rem; width: 20px; height: 20px; background: var(--cyan); border: 4px solid var(--dark-bg); border-radius: 50%; box-shadow: 0 0 0 3px var(--border-color);"></div>
+
+                        <div class="education-card" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin-left: 1rem; position: relative; overflow: hidden; transition: all 0.3s ease;">
+                            
+                            <!-- Top Border Accent -->
+                            <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent-gradient); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;"></div>
+                            
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    
+                                    <!-- Degree Icon Badge -->
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div style="width: 50px; height: 50px; background: rgba(0, 245, 255, 0.1); border: 2px solid var(--border-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                            <svg width="24" height="24" fill="var(--cyan)" viewBox="0 0 16 16">
+                                                <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+                                                <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="h4 fw-bold mb-1" style="color: var(--text-primary); font-family: 'JetBrains Mono', monospace;">
+                                                @edu.Degree
+                                            </h3>
+                                            @if (!string.IsNullOrEmpty(edu.Specialization))
+                                            {
+                                                <p class="mb-0" style="color: var(--text-secondary); font-size: 0.95rem;">
+                                                    @edu.Specialization
+                                                </p>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <h4 class="h5 mb-2" style="color: var(--text-accent);">
+                                        <svg width="16" height="16" fill="currentColor" class="me-2" viewBox="0 0 16 16">
+                                            <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+                                            <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
+                                        </svg>
+                                        @edu.Institution
+                                    </h4>
+
+                                    <p class="text-muted mb-0">
+                                        <svg width="14" height="14" fill="currentColor" class="me-1" viewBox="0 0 16 16">
+                                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                        </svg>
+                                        @edu.Location
+                                    </p>
+
+                                </div>
+                                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                    
+                                    @if (edu.IsCurrentlyStudying)
+                                    {
+                                        <span class="badge bg-primary px-3 py-2 mb-3 d-inline-block">
+                                            Currently Studying
+                                        </span>
+                                    }
+
+                                    <div class="mb-3">
+                                        <div style="color: var(--cyan); font-weight: 600; font-size: 1.1rem; font-family: 'JetBrains Mono', monospace;">
+                                            @edu.Duration
+                                        </div>
+                                        <div style="color: var(--text-secondary); font-size: 0.85rem;">
+                                            Duration
+                                        </div>
+                                    </div>
+
+                                    @if (!string.IsNullOrEmpty(edu.Grade))
+                                    {
+                                        <div style="background: rgba(0, 245, 255, 0.1); border: 2px solid var(--border-color); color: var(--cyan); padding: 0.75rem 1.25rem; border-radius: 12px; display: inline-block;">
+                                            <div style="font-weight: 600; font-size: 0.9rem;">Grade</div>
+                                            <div style="font-size: 1.2rem; font-weight: 700; font-family: 'JetBrains Mono', monospace;">@edu.Grade</div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<style>
+    .stat-card {
+        transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .education-card:hover {
+        transform: translateX(10px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--cyan) !important;
+    }
+
+    .education-card:hover > div:first-child {
+        transform: scaleX(1);
+    }
+
+    .education-timeline-item:hover .education-card {
+        border-color: var(--cyan);
+    }
+</style>
